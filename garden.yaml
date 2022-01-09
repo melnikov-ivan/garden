@@ -1,0 +1,43 @@
+esphome:
+    name: garden
+    platform: ESP32
+    board: nodemcu-32s
+    
+wifi:
+    ssid: ssid
+    password: password
+
+ota:
+    password: secretpass
+
+web_server:
+
+logger:
+    level: DEBUG
+
+sensor:
+  - platform: adc
+    pin: GPIO32
+    name: "Pot1"
+    update_interval: 6s
+    accuracy_decimals: 0
+    attenuation: 11db
+    unit_of_measurement: '%'
+    filters:
+      # 1.1v = in water
+      # 2.94v = dry
+      lambda: |-
+        return (2.95 - x) * 100.0 / (2.95 - 1.1);
+
+  - platform: adc
+    pin: GPIO33
+    name: "Pot2"
+    update_interval: 6s
+    accuracy_decimals: 0
+    attenuation: 11db
+    unit_of_measurement: '%'
+    filters:
+      # 1.1v = in water
+      # 2.94v = dry
+      lambda: |-
+        return (2.95 - x) * 100.0 / (2.95 - 1.1);
