@@ -19,7 +19,7 @@ sensor:
   - platform: adc
     pin: GPIO32
     name: "Pot1"
-    update_interval: 6s
+    update_interval: 10s
     accuracy_decimals: 0
     attenuation: 11db
     unit_of_measurement: '%'
@@ -32,7 +32,7 @@ sensor:
   - platform: adc
     pin: GPIO33
     name: "Pot2"
-    update_interval: 6s
+    update_interval: 10s
     accuracy_decimals: 0
     attenuation: 11db
     unit_of_measurement: '%'
@@ -41,3 +41,31 @@ sensor:
       # 2.94v = dry
       lambda: |-
         return (2.95 - x) * 100.0 / (2.95 - 1.1);
+
+  - platform: adc
+    pin: GPIO35
+    name: "Pot3"
+    update_interval: 10s
+    accuracy_decimals: 0
+    attenuation: 11db
+    unit_of_measurement: '%'
+    filters:
+      # 1.1v = in water
+      # 2.94v = dry
+      lambda: |-
+        return (2.95 - x) * 100.0 / (2.95 - 1.1);
+
+
+  - platform: adc
+    pin: GPIO34
+    name: "Pot4"
+    update_interval: 10s
+    accuracy_decimals: 0
+    attenuation: 11db
+    unit_of_measurement: '%'
+    filters:
+      # 1.1v = in water
+      # 2.94v = dry
+      lambda: |-
+        return (2.95 - x) * 100.0 / (2.95 - 1.1);
+    
