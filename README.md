@@ -1,4 +1,4 @@
-==Smart-Garden
+## Smart-Garden
 
 - moisture sensors over esphome
 
@@ -6,7 +6,8 @@ Public charts https://imelnikov.ru/garden/
 
 |   a  | Yandex | Google |
 |------|--------|--------|
-| MQTT | - требует tls сертификата сервера, для шифрования переписки
+| MQTT 
+| - требует tls сертификата сервера, для шифрования переписки
 - http-bridge требует iam-token, срок жизни которого 12 часов. Но его можно получить через команду.
 - POST https://iot-devices.api.cloud.yandex.net/iot-devices/v1/registries/arecmlsnsumegmha1ict/publish 
 | - требует tls сертификат сервера
