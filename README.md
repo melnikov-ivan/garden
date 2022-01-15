@@ -6,13 +6,10 @@ Public charts https://imelnikov.ru/garden/
 
 |   a  | Yandex | Google |
 |------|--------|--------|
-| MQTT |
-- требует tls сертификата сервера, для шифрования переписки
+| MQTT | - требует tls сертификата сервера, для шифрования переписки
 - http-bridge требует iam-token, срок жизни которого 12 часов. Но его можно получить через команду.
-- POST https://iot-devices.api.cloud.yandex.net/iot-devices/v1/registries/arecmlsnsumegmha1ict/publish
-|
-
-- требует tls сертификат сервера
+- POST https://iot-devices.api.cloud.yandex.net/iot-devices/v1/registries/arecmlsnsumegmha1ict/publish 
+| - требует tls сертификат сервера
 - http требует jwt-token (срок жизни которого можно управлять) и кодировать тело запроса.
 - jwt требует приватный и публичный ключи для проверки на сервере
 ```
