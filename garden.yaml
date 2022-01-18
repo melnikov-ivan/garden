@@ -33,6 +33,9 @@ interval:
           verify_ssl: false
           json: |-
             root["pot1"] = id(Pot1).state;
+            root["pot2"] = id(Pot2).state;
+            root["pot3"] = id(Pot3).state;
+            root["pot4"] = id(Pot4).state;
       
 
 sensor:
@@ -51,6 +54,7 @@ sensor:
   - platform: adc
     pin: GPIO32
     name: "Pot2"
+    id: "Pot2"
     update_interval: 1min
     accuracy_decimals: 0
     attenuation: 11db
@@ -62,6 +66,7 @@ sensor:
   - platform: adc
     pin: GPIO35
     name: "Pot3"
+    id: "Pot3"
     update_interval: 1min
     accuracy_decimals: 0
     attenuation: 11db
@@ -74,6 +79,7 @@ sensor:
   - platform: adc
     pin: GPIO34
     name: "Pot4"
+    id: "Pot4"
     update_interval: 1min
     accuracy_decimals: 0
     attenuation: 11db

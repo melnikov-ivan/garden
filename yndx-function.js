@@ -11,9 +11,30 @@ module.exports.handler = async function (event, context) {
         {
             "name": "soil.moisture",
             "labels": {
-                "pot1": "true"
+                "pot": "1"
             },
             "value": data.pot1
+        },
+        {
+            "name": "soil.moisture",
+            "labels": {
+                "pot": "2"
+            },
+            "value": data.pot2
+        },
+        {
+            "name": "soil.moisture",
+            "labels": {
+                "pot": "3"
+            },
+            "value": data.pot3
+        },
+        {
+            "name": "soil.moisture",
+            "labels": {
+                "pot": "4"
+            },
+            "value": data.pot4
         }
     ]
     };
