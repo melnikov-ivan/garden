@@ -4,12 +4,25 @@
 
 Public charts https://imelnikov.ru/garden/
 
+```
+cat secrets.yaml
+# WiFi
+wifi.ssid: 'your wifi network'
+wifi.password: 'your secret pass'
+
+# Cloud
+yndx.api.url: 'yndx api gateway url'
+```
+
 
 ## MQTT 
 ### Yandex
 - требует tls сертификата сервера, для шифрования переписки
 - http-bridge требует iam-token, срок жизни которого 12 часов. Но его можно получить через команду.
-- POST https://iot-devices.api.cloud.yandex.net/iot-devices/v1/registries/arecmlsnsumegmha1ict/publish 
+```
+curl -X POST  -d "{'topic': '/registries/arecmlsnsumegmha1ict/events', 'body': 'test'}" \
+https://iot-devices.api.cloud.yandex.net/iot-devices/v1/registries/arecmlsnsumegmha1ict/publish 
+``` 
 
 ### Google
 - требует tls сертификат сервера
