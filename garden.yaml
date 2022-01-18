@@ -9,55 +9,64 @@ wifi:
     use_address: 192.168.88.54
 
 ota:
-    password: 12345678
+    password: !secret ota.password
 
 web_server:
 
 logger:
     level: DEBUG
 
+# HTTP request component
+http_request:
+  useragent: esphome/device
+  timeout: 10s
+
+# Automation
 interval:
-  - interval: 1min
+  - interval: 10sec
     then:
       - logger.log: "API call"
+      - http_request.post:
+          url: !secret yndx.api.url
+          headers:
+            Content-Type: application/json
+          verify_ssl: false
+          json: |-
+            root["pot1"] = id(Pot1).state;
+      
 
 sensor:
   - platform: adc
     pin: GPIO33
     name: "Pot1"
-    update_interval: 10s
+    id: "Pot1"
+    update_interval: 1min
     accuracy_decimals: 0
     attenuation: 11db
     unit_of_measurement: '%'
     filters:
-      # 1.1v = in water
-      # 2.94v = dry
       lambda: |-
         return (2.95 - x) * 100.0 / (2.95 - 1.1);
 
   - platform: adc
     pin: GPIO32
     name: "Pot2"
-    update_interval: 10s
+    update_interval: 1min
     accuracy_decimals: 0
     attenuation: 11db
     unit_of_measurement: '%'
     filters:
-      # 1.1v = in water
-      # 2.94v = dry
       lambda: |-
         return (2.95 - x) * 100.0 / (2.95 - 1.1);
 
   - platform: adc
     pin: GPIO35
     name: "Pot3"
-    update_interval: 10s
+    update_interval: 1min
     accuracy_decimals: 0
     attenuation: 11db
     unit_of_measurement: '%'
     filters:
-      # 1.1v = in water
-      # 2.94v = dry
       lambda: |-
         return (2.95 - x) * 100.0 / (2.95 - 1.1);
 
@@ -65,13 +74,11 @@ sensor:
   - platform: adc
     pin: GPIO34
     name: "Pot4"
-    update_interval: 10s
+    update_interval: 1min
     accuracy_decimals: 0
     attenuation: 11db
     unit_of_measurement: '%'
     filters:
-      # 1.1v = in water
-      # 2.94v = dry
       lambda: |-
         return (2.95 - x) * 100.0 / (2.95 - 1.1);
     
